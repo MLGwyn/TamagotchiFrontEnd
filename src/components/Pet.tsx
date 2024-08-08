@@ -13,7 +13,7 @@ export type PetType = {
   scoldings: ScoldingType
 }
 
-type PlaytimeType = [
+export type PlaytimeType = [
   {
     id: undefined
     when: Date
@@ -22,7 +22,7 @@ type PlaytimeType = [
   }
 ]
 
-type FeedingType = [
+export type FeedingType = [
   {
     id: undefined
     when: Date
@@ -31,7 +31,7 @@ type FeedingType = [
   }
 ]
 
-type ScoldingType = [
+export type ScoldingType = [
   {
     id: undefined
     when: Date

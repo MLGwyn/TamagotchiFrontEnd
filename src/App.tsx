@@ -1,6 +1,6 @@
 import React from 'react'
 import { PetList } from './components/PetList'
-import { Route, Switch } from 'wouter'
+import { Route, Switch, Link } from 'wouter'
 import { PetPage } from './components/PetPage'
 import { getPets } from './api'
 
@@ -8,7 +8,9 @@ export function App() {
   return (
     <div className="app">
       <header>
-        <h1>Melissa&apos;s Tamagotchi Zoo</h1>
+        <Link to="/">
+          <h1>Melissa&apos;s Tamagotchi Zoo</h1>
+        </Link>
       </header>
       <main>
         <Switch>

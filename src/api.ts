@@ -1,5 +1,10 @@
 import axios from 'axios'
-import { PetType } from './components/Pet'
+import {
+  PetType,
+  PlaytimeType,
+  FeedingType,
+  ScoldingType,
+} from './components/Pet'
 import { useMutation, useQuery } from 'react-query'
 
 export async function getPet(id: string) {
@@ -17,11 +22,12 @@ export async function createNewPet(newPetName: string) {
 }
 
 export function useLoadOnePet(id: string) {
-  const { data: pet = EmptyPet, isLoading: isPetLoading } = useQuery(
-    ['pet', id],
-    () => getPet(id)
-  )
-  return { pet, isPetLoading }
+  const {
+    data: pet = EmptyPet,
+    refetch: refetchPet,
+    isLoading: isPetLoading,
+  } = useQuery(['pet', id], () => getPet(id))
+  return { pet, isPetLoading, refetchPet }
 }
 
 export const EmptyPet: PetType = {
@@ -51,5 +57,34 @@ export function useDeleteOnePetMutation(id: string, onSuccess: () => void) {
 }
 
 export async function feedPet(id: string) {
-  return await axios
+  return await axios.post<FeedingType>(
+    `http://localhost:5000/api/Pets/${id}/Feedings`,
+    { petId: id }
+  )
+}
+
+export function useFeedPetMutation(id: string, onSuccess: () => void) {
+  return useMutation(() => feedPet(id), { onSuccess })
+}
+
+export async function playWithPet(id: string) {
+  return await axios.post<PlaytimeType>(
+    `http://localhost:5000/api/Pets/${id}/Playtimes`,
+    { petId: id }
+  )
+}
+
+export function usePlayWithPetMutation(id: string, onSuccess: () => void) {
+  return useMutation(() => playWithPet(id), { onSuccess })
+}
+
+export async function scoldPet(id: string) {
+  return await axios.post<ScoldingType>(
+    `http://localhost:5000/api/Pets/${id}/Scoldings`,
+    { petId: id }
+  )
+}
+
+export function useScoldPetMutation(id: string, onSuccess: () => void) {
+  return useMutation(() => scoldPet(id), { onSuccess })
 }
