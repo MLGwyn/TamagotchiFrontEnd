@@ -1,10 +1,5 @@
 import axios from 'axios'
-import {
-  PetType,
-  PlaytimeType,
-  FeedingType,
-  ScoldingType,
-} from './components/Pet'
+import { PetType, InteractionType } from './components/Pet'
 import { useMutation, useQuery } from 'react-query'
 
 export async function getPet(id: string) {
@@ -57,7 +52,7 @@ export function useDeleteOnePetMutation(id: string, onSuccess: () => void) {
 }
 
 export async function feedPet(id: string) {
-  return await axios.post<FeedingType>(
+  return await axios.post<InteractionType>(
     `http://localhost:5000/api/Pets/${id}/Feedings`,
     { petId: id }
   )
@@ -68,7 +63,7 @@ export function useFeedPetMutation(id: string, onSuccess: () => void) {
 }
 
 export async function playWithPet(id: string) {
-  return await axios.post<PlaytimeType>(
+  return await axios.post<InteractionType>(
     `http://localhost:5000/api/Pets/${id}/Playtimes`,
     { petId: id }
   )
@@ -79,7 +74,7 @@ export function usePlayWithPetMutation(id: string, onSuccess: () => void) {
 }
 
 export async function scoldPet(id: string) {
-  return await axios.post<ScoldingType>(
+  return await axios.post<InteractionType>(
     `http://localhost:5000/api/Pets/${id}/Scoldings`,
     { petId: id }
   )

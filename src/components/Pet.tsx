@@ -8,30 +8,12 @@ export type PetType = {
   hungerLevel: undefined
   happinessLevel: undefined
   lastInteractedWithDate: undefined
-  playtimes: PlaytimeType
-  feedings: FeedingType
-  scoldings: ScoldingType
+  playtimes: InteractionType
+  feedings: InteractionType
+  scoldings: InteractionType
 }
 
-export type PlaytimeType = [
-  {
-    id: undefined
-    when: Date
-    petId: undefined
-    pet: undefined
-  }
-]
-
-export type FeedingType = [
-  {
-    id: undefined
-    when: Date
-    petId: undefined
-    pet: undefined
-  }
-]
-
-export type ScoldingType = [
+export type InteractionType = [
   {
     id: undefined
     when: Date
