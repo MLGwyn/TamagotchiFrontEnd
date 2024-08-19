@@ -4,6 +4,7 @@ import { Link } from 'wouter'
 export type PetType = {
   id: undefined
   name: undefined
+  image: undefined
   birthday: Date
   hungerLevel: undefined
   happinessLevel: undefined
@@ -31,20 +32,22 @@ export function Pet({
   pet: { id, name, birthday, hungerLevel, happinessLevel },
 }: PetProps) {
   const birthdayDate = new Date(birthday)
+
   return (
-    <>
+    <div className="pet-pen">
       <h2>
         <Link to={`/api/Pets/${id}`}>{name}</Link>
       </h2>
-      <span>
+      <img src={`https://random-d.uk/api/${id}.jpg`} height="100" width="100" />
+      <div>
         {birthdayDate.toLocaleString('en-US', {
           month: 'short',
           day: 'numeric',
           year: 'numeric',
         })}
-      </span>
+      </div>
       <div>Happiness Level:{happinessLevel}</div>
       <div>Hunger Level:{hungerLevel}</div>
-    </>
+    </div>
   )
 }

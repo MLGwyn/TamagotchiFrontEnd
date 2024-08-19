@@ -10,19 +10,22 @@ export function PetList() {
     isLoading,
   } = useQuery('pets', getPets)
   const [newPetName, setNewPetName] = useState('')
+  const [newPetImage, setNewPetImage] = useState('')
 
   const petMutation = useMutation(
-    (newPetName: string) => createNewPet(newPetName),
+    (newPetName: string) => createNewPet(newPetName, newPetImage),
     {
       onSuccess: function () {
         refetchPets()
         setNewPetName('')
+        setNewPetImage('')
       },
     }
   )
   if (isLoading) {
     return <p>...loading...</p>
   }
+
   return (
     <>
       <form

@@ -35,7 +35,12 @@ export function PetPage() {
         <Link to="/">Home</Link>
       </p>
       <h2>{pet.name}</h2>
-      <span>{pet.birthday}</span>
+      <img
+        src={`https://random-d.uk/api/${pet.id}.jpg`}
+        height="250"
+        width="250"
+      />
+      <div>{pet.birthday}</div>
       <div>Happiness Level:{pet.happinessLevel}</div>
       <div>Hunger Level:{pet.hungerLevel}</div>
       <div>Last Interacted With:{pet.lastInteractedWithDate}</div>

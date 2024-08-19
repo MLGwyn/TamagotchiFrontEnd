@@ -10,9 +10,10 @@ export async function getPets() {
   return (await axios.get<PetType[]>('http://localhost:5000/api/Pets')).data
 }
 
-export async function createNewPet(newPetName: string) {
+export async function createNewPet(newPetName: string, newPetImage: string) {
   return await axios.post('http://localhost:5000/api/Pets', {
     name: newPetName,
+    image: newPetImage,
   })
 }
 
@@ -29,6 +30,7 @@ export const EmptyPet: PetType = {
   id: undefined,
   name: undefined,
   birthday: new Date(),
+  image: undefined,
   hungerLevel: undefined,
   happinessLevel: undefined,
   lastInteractedWithDate: undefined,

@@ -2,11 +2,10 @@ import React from 'react'
 import { PetList } from './components/PetList'
 import { Route, Switch, Link } from 'wouter'
 import { PetPage } from './components/PetPage'
-import { getPets } from './api'
 
 export function App() {
   return (
-    <div className="app">
+    <div className="zoo">
       <header>
         <Link to="/">
           <h1>Melissa&apos;s Tamagotchi Zoo</h1>
@@ -22,4 +21,3 @@ export function App() {
     </div>
   )
 }
-console.log(getPets())
